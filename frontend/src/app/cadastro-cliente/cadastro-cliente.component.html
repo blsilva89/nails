@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="example-container">
+
+    <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" placeholder="Digite o nome">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" placeholder="Digite o CPF">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="telefone" placeholder="Digite o telefone">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Escolha a data">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div formGroupName="endereco">
+        <mat-form-field>
+          <mat-label>Rua</mat-label>
+          <input matInput formControlName="rua" placeholder="Digite a rua">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade" placeholder="Digite a cidade">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" placeholder="Digite o estado">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="cep" placeholder="Digite o CEP">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button mat-dialog-close color="primary" type="submit">Salvar</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!-- agendamento-popup.component.html -->
+<div class="container">
+  <div class="example-container">
+
+
+    <h2>Novo Agendamento</h2>
+
+    <form [formGroup]="agendamentoForm" (ngSubmit)="submitForm()">
+      <mat-form-field>
+        <mat-label>Data do Agendamento</mat-label>
+        <input matInput formControlName="data" readonly>
+        <!-- <input matInput [matDatepicker]="picker" formControlName="data" readonly> -->
+        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+        <!-- <mat-datepicker #picker></mat-datepicker> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="cliente">
+          <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{ cliente.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hora do Agendamento</mat-label>
+        <input type="time" matInput formControlName="hora">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </form>
+
+  </div>
+</div>

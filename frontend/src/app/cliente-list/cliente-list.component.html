@@ -1,0 +1,31 @@
+<div class="container">
+
+  <h2>Lista de Clientes</h2>
+  
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="telefone">
+      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{ cliente.telefone }} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="dataNascimento">
+      <mat-header-cell *matHeaderCellDef> Data de Nascimento </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{ cliente.dataNascimento }} </mat-cell>
+    </ng-container>
+
+  <ng-container matColumnDef="endereco">
+    <mat-header-cell *matHeaderCellDef> Endereço </mat-header-cell>
+    <mat-cell *matCellDef="let cliente"> {{ cliente.endereco }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<button mat-raised-button color="primary" (click)="abrirPopUp()">Novo Cliente</button>
+</div>

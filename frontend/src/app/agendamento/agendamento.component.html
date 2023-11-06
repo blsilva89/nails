@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="example-container">
+    <form [formGroup]="filtroForm" (ngSubmit)="onSubmitFiltro()">
+      <mat-form-field>
+        <mat-label>Selecione a Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data" placeholder="Escolha a data">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Filtrar</button>
+    </form>
+  </div>
+
+  <div *ngIf="agendamentos.length > 0">
+    <h2>Agendamentos para a Data Selecionada</h2>
+    <table mat-table [dataSource]="agendamentos">
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let agendamento"> {{ agendamento.nome }} </td>
+      </ng-container>
+
+      <!-- Data Column -->
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let agendamento"> {{ agendamento.data | date:'dd/MM/yyyy' }} </td>
+      </ng-container>
+
+      <!-- Hora Column -->
+      <ng-container matColumnDef="hora">
+        <th mat-header-cell *matHeaderCellDef> Hora </th>
+        <td mat-cell *matCellDef="let agendamento"> {{ agendamento.hora }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['nome', 'data', 'hora']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['nome', 'data', 'hora'];"></tr>
+    </table>
+  </div>
+
+  <!-- Botão para Inserir Novo Agendamento -->
+  <button mat-raised-button color="primary" (click)="inserirNovoAgendamento()">Inserir Novo Agendamento</button>
+</div>
